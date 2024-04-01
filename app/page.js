@@ -6,7 +6,7 @@ export default async function Home() {
       <Link className="border-2 rounded p-4" href="/login">
         Login
       </Link>
-      <Link className="border-2 rounded p-4" href="/signout">
+      <Link className="border-2 rounded p-4" href="/signup">
         Signup
       </Link>
     </main>

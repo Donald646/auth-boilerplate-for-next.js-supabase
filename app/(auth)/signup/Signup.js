@@ -1,6 +1,6 @@
-import { login } from "../actions";
+import { signup } from "../actions";
 
-export default function LoginPage() {
+export default function SignUpPage() {
   return (
     <div className="flex flex-col w-full h-screen items-center justify-center">
       <p className="text-5xl mb-10">Coeus</p>
@@ -31,10 +31,10 @@ export default function LoginPage() {
         </div>
 
         <button
-          formAction={login}
+          formAction={signup}
           className="border-2 rounded-lg mt-3 w-1/2 items-center p-1"
         >
-          Login
+          Sign up
         </button>
       </form>
     </div>
