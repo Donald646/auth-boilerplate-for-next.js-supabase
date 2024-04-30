@@ -17,9 +17,5 @@ export default async function Layout({ children }) {
   if (!user) {
     return redirect("/");
   }
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
+  return <div>{children}</div>;
 }
