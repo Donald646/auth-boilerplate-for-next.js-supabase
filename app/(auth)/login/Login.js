@@ -3,27 +3,37 @@ import { postData } from "@/utils/httpRequests/util";
 import Link from "next/link";
 import { useRouter } from "next/navigation"; // Correct import path for useRouter
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 export default function LoginPage() {
   const router = useRouter(); // Initialize useRouter outside of the handleSubmit function
+
+  const [isDisabled, setIsDisabled] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsDisabled(true);
     const formData = new FormData(e.target);
     const email = formData.get("email");
     const password = formData.get("password");
     const body = { userEmail: email, userPassword: password };
-    const response = await postData(false, "api/loginUser", body);
+
+    const response = await postData("api/loginUser", body);
     console.log(response);
     if (response.valid) {
-      router.push("/home"); // Use router.push for navigation
+      // Adjusted property name for clarity
+      router.push("/dashboard");
+      router.refresh();
     } else {
       toast.error(response.error);
     }
+    setIsDisabled(false);
   };
 
   return (
     <div className="flex flex-col w-full h-screen items-center justify-center">
-      <p className="text-5xl mb-10">(Title Here)</p>
+      <p className="text-5xl mb-10">Computable</p>
+
       <form
         className="flex flex-col justify-center w-1/5 gap-2 items-center"
         onSubmit={handleSubmit}
@@ -36,7 +46,7 @@ export default function LoginPage() {
             id="email"
             name="email"
             type="email"
-            className="border-2 border-white rounded h-10 w-full"
+            className="border-2 border-white rounded h-10 w-full text-black"
             required
           />
         </div>
@@ -48,9 +58,24 @@ export default function LoginPage() {
             id="password"
             name="password"
             type="password"
-            className="border-2 border-white rounded h-10 w-full"
+            className="border-2 border-white rounded h-10 w-full text-black"
             required
           />
+
+          <Link
+            href="/forgot-password"
+            className="underline text-blue-600 text-sm"
+          >
+            Forgot Password?
+          </Link>
+
+          <button
+            className="border-2 rounded-lg mt-3 w-full items-center p-1"
+            type="submit"
+            disabled={isDisabled}
+          >
+            Login
+          </button>
           <label className="text-sm">
             Don't have an account?{" "}
             <Link href="/signup" className="underline text-blue-600">
@@ -58,13 +83,6 @@ export default function LoginPage() {
             </Link>
           </label>
         </div>
-
-        <button
-          className="border-2 rounded-lg mt-3 w-full items-center p-1"
-          type="submit"
-        >
-          Login
-        </button>
       </form>
     </div>
   );
