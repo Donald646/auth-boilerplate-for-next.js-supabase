@@ -18,7 +18,7 @@ export default function LoginPage() {
     const password = formData.get("password");
     const body = { userEmail: email, userPassword: password };
 
-    const response = await postData("api/loginUser", body);
+    const response = await postData(false, "api/loginUser", body);
     console.log(response);
     if (response.valid) {
       // Adjusted property name for clarity
