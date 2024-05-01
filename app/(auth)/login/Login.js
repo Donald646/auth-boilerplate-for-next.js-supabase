@@ -22,7 +22,7 @@ export default function LoginPage() {
     console.log(response);
     if (response.valid) {
       // Adjusted property name for clarity
-      router.push("/dashboard");
+      router.push("/home");
       router.refresh();
     } else {
       toast.error(response.error);
@@ -31,34 +31,39 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex flex-col w-full h-screen items-center justify-center">
-      <p className="text-5xl mb-10">Computable</p>
-
+    <div className="flex flex-col w-full h-screen items-center justify-center md:bg-slate-50 p-10">
       <form
-        className="flex flex-col justify-center w-1/5 gap-2 items-center"
+        className="flex flex-col justify-center gap-5 md:p-10 rounded-xl w-full md:w-1/3 bg-white shadow-xl"
         onSubmit={handleSubmit}
       >
+        <div>
+          <p className="text-2xl text-left">Sign in to Worksheet Wiz</p>
+          <p className="text-left text-md text-slate-500">
+            Generate Worksheets In Seconds
+          </p>
+        </div>
+
         <div className="w-full">
           <label htmlFor="email" className="block text-left">
-            Email:
+            Email
           </label>
           <input
             id="email"
             name="email"
             type="email"
-            className="border-2 border-white rounded h-10 w-full text-black"
+            className="border-2 border-slate-300 rounded-lg h-10 w-full text-black"
             required
           />
         </div>
         <div className="w-full">
           <label htmlFor="password" className="block text-left">
-            Password:
+            Password
           </label>
           <input
             id="password"
             name="password"
             type="password"
-            className="border-2 border-white rounded h-10 w-full text-black"
+            className="border-2 border-slate-300 rounded-lg h-10 w-full text-black"
             required
           />
 
@@ -70,11 +75,11 @@ export default function LoginPage() {
           </Link>
 
           <button
-            className="border-2 rounded-lg mt-3 w-full items-center p-1"
+            className="rounded-md mt-3 w-full items-center p-1 font-bold text-xl text-white bg-blue-500"
             type="submit"
             disabled={isDisabled}
           >
-            Login
+            Continue
           </button>
           <label className="text-sm">
             Don't have an account?{" "}

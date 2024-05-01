@@ -23,50 +23,59 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="flex flex-col w-full h-screen items-center justify-center">
-      <p className="text-5xl mb-10">(Title Here)</p>
+    <div className="flex flex-row w-full h-screen items-center justify-center">
       <form
-        className="flex flex-col justify-center w-full md:w-1/5 gap-2 items-center p-4 md:p-0"
+        className="flex flex-col w-full justify-center items-center md:w-1/2"
         onSubmit={handleSubmit}
       >
-        <div className="w-full">
-          <label htmlFor="email" className="block text-left">
-            Email:
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            className="p-1 rounded h-10 w-full"
-            required
-          />
+        <div className="flex flex-col w-3/5 justify-center gap-5">
+          <div>
+            <p className="text-2xl text-left">Create an Account</p>
+            <p className="text-left text-md text-slate-500">
+              Get Started on Your Worksheet Journey
+            </p>
+          </div>
+          <div className="w-full">
+            <label htmlFor="email" className="block text-left">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              className="border-2 border-slate-300 rounded-lg h-10 w-full text-black p-1"
+              required
+            />
+          </div>
+          <div className="w-full">
+            <label htmlFor="password" className="block text-left">
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              className="border-2 border-slate-300 rounded-lg h-10 w-full text-black p-1"
+              required
+            />
+            <label className="text-sm">
+              Already Have an account?{" "}
+              <Link href="/login" className="underline text-blue-600">
+                Login
+              </Link>
+            </label>
+            <button
+              className="rounded-md mt-3 w-full items-center p-1 font-bold text-xl text-white bg-blue-500"
+              type="submit"
+            >
+              Sign up
+            </button>
+          </div>
         </div>
-        <div className="w-full">
-          <label htmlFor="password" className="block text-left">
-            Password:
-          </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            className="p-1 border-white rounded h-10 w-full"
-            required
-          />
-          <label className="text-sm">
-            Already Have an account?{" "}
-            <Link href="/login" className="underline text-blue-600">
-              Login
-            </Link>
-          </label>
-        </div>
-
-        <button
-          className="border-2 rounded-lg mt-3 w-full items-center p-1"
-          type="submit"
-        >
-          Sign up
-        </button>
       </form>
+      <div className="flex w-1/2 h-full p-4">
+        <img src="/" className="rounded-xl" alt="img here" />
+      </div>
     </div>
   );
 }
